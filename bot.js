@@ -91,7 +91,7 @@ const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {  
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());  
 };  
-message.channel.send('**لديك 15 ثانيه لتعرف اسم أي برنامج .**').then(msg => {  
+message.channel.send('**لديك 15 ثانيه لتفكيك الكلمة .**').then(msg => {  
         
 msg.channel.sendFile(`${item.image}`).then(() => {  
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })  
