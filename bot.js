@@ -24,65 +24,60 @@ const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
 const prefix = "d!";
 let done = {};
 const Token = process.env.BOT_TOKEN
-
-
 client.on('ready', () => {
     client.user.setActivity(" d!help | d!invite",{type: 'WATCHING'})
     console.log(`[Premium] DragonBot Is Online Now`)
 });
-client.on('message', function(message) {
-	const myID = ['429972030092476437'];
-    let args = message.content.split(" ").slice(1).join(" ");
-    if(message.content.startsWith(prefix + "setname")) {
-		        if(message.author.id !== myID) return;
-            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
-        client.user.setUsername(args);
+  
+      client.on('message', message => {
+        const myID = ['429972030092476437','458615027214188546'];
+    const premprefix = "d!";
+    var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    if(message.content.startsWith(premprefix + "setname")) {
+            if(!argresult) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setUsername(argresult);
         message.channel.send(':white_check_mark: Done!').then(msg => {
-           msg.delete(5000);
           message.delete(5000);
         });
-    } else if(message.content.startsWith(prefix + "stream")) {
-		        if(message.author.id !== myID) return;
-            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
-        client.user.setGame(args , 'https://twitch.tv/6xlez1');
+    } else if(message.content.startsWith(premprefix + "stream")) {
+
+            if(!argresult) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(argresult , 'https://twitch.tv/6xlez1');
         message.channel.send(':white_check_mark: Done!').then(msg => {
-           msg.delete(5000);
           message.delete(5000);
         });
-    } else if(message.content.startsWith(prefix + "ply")) {
-				        if(message.author.id !== myID) return;
-            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
-        client.user.setGame(args);
+    } else if(message.content.startsWith(premprefix + "ply")) {
+		
+            if(!argresult) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(argresult);
         message.channel.send(':white_check_mark: Done!').then(msg => {
-           msg.delete(5000);
           message.delete(5000);
         });
-    } else if(message.content.startsWith(prefix + "listen")) {
-				        if(message.author.id !== myID) return;
-            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
-        client.user.setActivity(args, {type:'LISTENING'});
+    } else if(message.content.startsWith(premprefix + "listen")) {
+		
+            if(!argresult) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(argresult, {type:'LISTENING'});
         message.channel.send(':white_check_mark: Done!').then(msg => {
-           msg.delete(5000);
           message.delete(5000);
         });
-    } else if(message.content.startsWith(prefix + "watch")) {
-				        if(message.author.id !== myID) return;
-            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
-        client.user.setActivity(args, {type:'WATCHING'});
+    } else if(message.content.startsWith(premprefix + "watch")) {
+		
+            if(!argresult) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(argresult, {type:'WATCHING'});
         message.channel.send(':white_check_mark: Done!').then(msg => {
-           msg.delete(5000);
           message.delete(5000);
         });
-    } else if(message.content.startsWith(prefix + "setavatar")) {
-				        if(message.author.id !== myID) return;
-        client.user.setAvatar(args);
+    } else if(message.content.startsWith(premprefix + "setavatar")) {
+		
+        client.user.setAvatar(argresult);
         message.channel.send(':white_check_mark: Done!').then(msg => {
-                if(!args) return message.reply('اكتب الحالة اللي تريدها.');
-           msg.delete(5000);
+                if(!argresult) return message.reply('اكتب الحالة اللي تريدها.');
           message.delete(5000);
         });
     }
 });
+
 client.on('message', message => {
   if(message.content.startsWith(prefix + 'hrole')) {
       if(!message.member.hasPermission('MANAGE_ROLES')) return
