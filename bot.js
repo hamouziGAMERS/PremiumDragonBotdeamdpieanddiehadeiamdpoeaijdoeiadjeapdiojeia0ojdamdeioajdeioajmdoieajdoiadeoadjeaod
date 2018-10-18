@@ -31,7 +31,7 @@ client.on('ready', () => {
     console.log(`[Premium] DragonBot Is Online Now`)
 });
 client.on('message', function(message) {
-	const myID = ['ايديك','ايدي اخويك'];
+	const myID = ['429972030092476437','458615027214188546'];
     let args = message.content.split(" ").slice(1).join(" ");
     if(message.content.startsWith(prefix + "setname")) {
 		        if(message.author.id !== myID) return;
