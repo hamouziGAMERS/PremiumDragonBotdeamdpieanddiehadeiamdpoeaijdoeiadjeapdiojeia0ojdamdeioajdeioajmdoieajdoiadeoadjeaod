@@ -30,7 +30,7 @@ client.on('ready', () => {
 });
   
       client.on('message', message => {
-        const myID = ['429972030092476437','458615027214188546'];
+        const devs = ['429972030092476437','458615027214188546'];
     const premprefix = "d!";
     var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
