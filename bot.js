@@ -22,6 +22,9 @@ const bane = JSON.parse(fs.readFileSync('./alpha.json', 'utf8'));
 const dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
 const prefix = "d!";
+const devs = ['429972030092476437','458615027214188546'];
+const p = {}
+
 let done = {};
 const Token = process.env.BOT_TOKEN
 client.on('ready', () => {
@@ -356,7 +359,6 @@ message.channel.sendFile(canvas.toBuffer());
 });
 });
       client.on('message', message => {
-        const devs = ['429972030092476437','458615027214188546'];
     const premprefix = "d!";
     var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
@@ -404,6 +406,24 @@ message.channel.sendFile(canvas.toBuffer());
     }
 });
 
+client.on('message', message => {
+	const p = {}
+if(message.channel.type === "dm") return;
+if(message.author.bot) return;
+if(!p[message.guild.id]) p[message.guild.id] = {
+    prefix: "d!"
+}
+const prefix = p[message.guild.id].prefix
+  if (message.content.startsWith(prefix + "setprefix")) {
+    if (!devs.includes(message.author.id)) return;
+    let newPrefix = message.content.split(' ').slice(1).join(" ")
+    if(!newPrefix) return message.reply(`**${prefix}setprefix <prefix>**`)
+    p[message.guild.id].prefix = newPrefix
+    message.channel.send(`**${message.guild.name}'تم تغيير البرفكس ${newPrefix}**`);
+} 
+
+
+});
 
 let points = JSON.parse(fs.readFileSync('./fkk/fkkPTS.json', 'utf8'));  
 client.on('message', message => {  
