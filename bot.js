@@ -21,7 +21,7 @@ const queue = new Map();
 const bane = JSON.parse(fs.readFileSync('./alpha.json', 'utf8'));
 const dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-const prefix = "d!";
+const prefix = "!";
 const devs = ['429972030092476437','458615027214188546'];
 const p = {}
 
@@ -33,7 +33,7 @@ client.on('ready', () => {
 });
 client.on('message', message => {
 
-  if(message.content.split(' ')[0] == prefix + 'id') {
+  if(message.content.split(' ')[0] == prefix + '!') {
   if(!message.channel.guild) return;
  
   let args = message.content.split(' ').slice(1).join(' ');
